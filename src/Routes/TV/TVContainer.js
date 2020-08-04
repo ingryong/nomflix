@@ -7,8 +7,8 @@ export default class extends React.Component {
     topRated: null,
     popular: null,
     airingToday: null,
+    loading: true,
     error: null,
-    loading: null,
   };
 
   async componentDidMount() {
@@ -25,7 +25,7 @@ export default class extends React.Component {
       this.setState({ topRated, popular, airingToday });
     } catch {
       this.setState({
-        error: "Can't find TV infomation.",
+        error: "Can't find TV information.",
       });
     } finally {
       this.setState({ loading: false });
@@ -33,14 +33,14 @@ export default class extends React.Component {
   }
 
   render() {
-    const { topRated, popular, airingToday, error, loading } = this.state;
+    const { topRated, popular, airingToday, loading, error } = this.state;
     return (
       <TVPresenter
         topRated={topRated}
         popular={popular}
         airingToday={airingToday}
-        error={error}
         loading={loading}
+        error={error}
       />
     );
   }
